@@ -20,6 +20,7 @@ final class ActionViewController: UIViewController {
 	// MARK: - Lifecycle
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(loadDefaultScript))
 		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
 
 		NotificationCenter.default.addObserver(self,
@@ -40,6 +41,7 @@ final class ActionViewController: UIViewController {
 
 					DispatchQueue.main.async {
 						self?.title = self?.pageTitle
+						self?.loadScript()
 					}
 				}
 			}
@@ -47,12 +49,21 @@ final class ActionViewController: UIViewController {
 	}
 
 	// MARK: - Actions
+	@objc private func loadDefaultScript() {
+		let alertController = UIAlertController(title: "Load script", message: nil, preferredStyle: .actionSheet)
+		alertController.addAction(UIAlertAction(title: "Print page title", style: .default) { [weak self] _ in
+			self?.script.text = "alert(document.title);"
+		})
+		present(alertController, animated: UIView.areAnimationsEnabled)
+	}
+
 	@objc private func done() {
 		let argument: NSDictionary = ["customJavaScript": script.text ?? ""]
 		let webDictionary: NSDictionary = [NSExtensionJavaScriptFinalizeArgumentKey: argument]
 		let customJavaScript = NSItemProvider(item: webDictionary, typeIdentifier: kUTTypePropertyList as String)
 		let item = NSExtensionItem()
 		item.attachments = [customJavaScript]
+		saveScript()
 
 		extensionContext?.completeRequest(returningItems: [item])
 	}
@@ -73,5 +84,17 @@ final class ActionViewController: UIViewController {
 
 		let selectedRange = script.selectedRange
 		script.scrollRangeToVisible(selectedRange)
+	}
+
+	// MARK: - User Defaults
+	private func saveScript() {
+		guard let host = URL(string: pageURL)?.host, let code = script.text else { return }
+		UserDefaults.standard.setValue(code, forKey: host)
+	}
+
+	private func loadScript() {
+		guard let host = URL(string: pageURL)?.host else { return }
+		let code = UserDefaults.standard.string(forKey: host) ?? ""
+		script.text = code
 	}
 }

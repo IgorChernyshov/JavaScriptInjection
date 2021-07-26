@@ -16,20 +16,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="528"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="NOA-Dm-cuz">
-                                <rect key="frame" x="0.0" y="88" width="320" height="44"/>
-                                <items>
-                                    <navigationItem id="3HJ-uW-3hn">
-                                        <barButtonItem key="leftBarButtonItem" title="Done" style="done" id="WYi-yp-eM6">
-                                            <connections>
-                                                <action selector="done" destination="ObA-dk-sSI" id="Qdu-qn-U6V"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="qL8-8X-W9K">
-                                <rect key="frame" x="0.0" y="132" width="320" height="396"/>
+                                <rect key="frame" x="0.0" y="88" width="320" height="440"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -39,13 +27,10 @@
                         <viewLayoutGuide key="safeArea" id="VVe-Uw-JpX"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="VVe-Uw-JpX" firstAttribute="trailing" secondItem="NOA-Dm-cuz" secondAttribute="trailing" id="A05-Pj-hrr"/>
-                            <constraint firstItem="qL8-8X-W9K" firstAttribute="leading" secondItem="NOA-Dm-cuz" secondAttribute="leading" id="C5M-wa-kUR"/>
-                            <constraint firstItem="qL8-8X-W9K" firstAttribute="trailing" secondItem="NOA-Dm-cuz" secondAttribute="trailing" id="CUx-HA-2cu"/>
-                            <constraint firstItem="NOA-Dm-cuz" firstAttribute="leading" secondItem="VVe-Uw-JpX" secondAttribute="leading" id="HxO-8t-aoh"/>
-                            <constraint firstItem="qL8-8X-W9K" firstAttribute="bottom" secondItem="VVe-Uw-JpX" secondAttribute="bottom" id="K4a-Qd-U6O"/>
-                            <constraint firstItem="qL8-8X-W9K" firstAttribute="top" secondItem="NOA-Dm-cuz" secondAttribute="bottom" id="TuP-hj-4be"/>
-                            <constraint firstItem="NOA-Dm-cuz" firstAttribute="top" secondItem="VVe-Uw-JpX" secondAttribute="top" id="we0-1t-bgp"/>
+                            <constraint firstItem="qL8-8X-W9K" firstAttribute="bottom" secondItem="VVe-Uw-JpX" secondAttribute="bottom" id="0br-hP-V6q"/>
+                            <constraint firstItem="qL8-8X-W9K" firstAttribute="top" secondItem="VVe-Uw-JpX" secondAttribute="top" id="4IA-nP-LsR"/>
+                            <constraint firstItem="qL8-8X-W9K" firstAttribute="trailing" secondItem="VVe-Uw-JpX" secondAttribute="trailing" id="StX-bI-XMk"/>
+                            <constraint firstItem="qL8-8X-W9K" firstAttribute="leading" secondItem="VVe-Uw-JpX" secondAttribute="leading" id="yU9-Ya-oz9"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="OSO-tj-COl"/>
